@@ -3,8 +3,10 @@ package com.springpractise.SpringMVC.controller;
 import com.springpractise.SpringMVC.dto.ClubDto;
 import com.springpractise.SpringMVC.models.Club;
 import com.springpractise.SpringMVC.services.ClubService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,8 +40,13 @@ public class ClubController {
     }
 
     @PostMapping("/clubs/new")
-    public String saveClub(@ModelAttribute("club") Club club){
-        clubService.saveClub(club);
+    public String saveClub(@Valid @ModelAttribute("club") ClubDto clubDto
+    ,BindingResult result,Model model){
+        if(result.hasErrors()){
+            model.addAttribute("club",clubDto);
+            return "clubs-create";
+        }
+        clubService.saveClub(clubDto);
         return "redirect:/clubs";
     }
 
@@ -51,10 +58,16 @@ public class ClubController {
     }
 
     @PostMapping("/clubs/{clubId}/edit")
-    public String updateClub(@PathVariable("clubId") int clubId,@ModelAttribute("club") ClubDto club){
+    public String updateClub(@PathVariable("clubId") int clubId,
+                             @Valid @ModelAttribute("club") ClubDto club,
+                             BindingResult result){
+        if(result.hasErrors()){
+            return "clubs-edit";
+        }
         club.setId(clubId);
          clubService.updateClub(club);
          return "redirect:/clubs";
     }
+
 
 }

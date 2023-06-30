@@ -10,26 +10,32 @@
   <section layout:fragment ="body" class="py-5">
     <div class="container">
       <form role="form" method="post" th:action="@{/clubs/new}" th:object="${club}">
-        <div class="form-row">
+        <div class="form-row ">
           <div class="form-group col-md-6">
             <label for="title">Title</label>
             <input id="title" placeholder="title" th:field="*{title}" name="title">
+            <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></p>
           </div>
           <div class="form-group col-md-6">
             <label for="photoUrl">PhotoURL</label>
             <input id="photoUrl" placeholder="Photo Url" th:field="*{photoUrl}" name="photoUrl">
+            <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
           </div>
         </div>
-        <div class="form-group mb-5">
+        <div class="form-group mb-3">
           <label for="content">Content</label>
           <input
                   id="content" placeholder="Content" th:field="*{content}" name="content">
+          <p th:if="${#fields.hasErrors('content')}" class="text-danger" th:errors="*{content}"></p>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
       </form>
     </div>
   </section>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
 <!-- Footer-->
 </body>
 </html>
