@@ -1,0 +1,64 @@
+<html
+        xmlns:th="http://thmyelead.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymelaef/layout"
+        layout:decorate="~{layout}">
+<head>
+  <title>Events Create</title>
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+  <section layout:fragment ="body" class="py-5">
+    <div class="container">
+      <form role="form" method="post" th:action="@{/events/{clubId}(clubId=${clubId})}" th:object="${event}">
+        <div class="form-row ">
+          <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Event Name" th:field="*{name}" name="title">
+            <p th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" placeholder="Event Type" th:field="*{type}" name="type">
+            <p th:if="${#fields.hasErrors('type')}" class="text-danger" th:errors="*{type}"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="photoUrl">PhotoURL</label>
+            <input type="text" class="form-control" id="photoUrl" placeholder="Photo Url" th:field="*{photoUrl}" name="photoUrl">
+            <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="startTime">Start Time</label>
+            <input type="datetime-local" class="form-control" id="startTime" placeholder="Event start time" th:field="*{startTime}" name="startTime">
+            <p th:if="${#fields.hasErrors('startTime')}" class="text-danger" th:errors="*{startTime}"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="endTime">End Time</label>
+            <input type="datetime-local" class="form-control" id="endTime" placeholder="Event end time" th:field="*{endTime}" name="endTime">
+            <p th:if="${#fields.hasErrors('endTime')}" class="text-danger" th:errors="*{endTime}"></p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- Footer-->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
