@@ -13,5 +13,8 @@ public interface ClubRepository extends JpaRepository<Club,Integer> {
     Optional<Club> findByTitle(String url);
      Optional<Club> findById(int clubId);
 
+     @Query("SELECT c FROM Club c WHERE c.title LIKE concat('%',:query,'%') ")
+    List<Club> searchClubs(String query);
+
 
 }

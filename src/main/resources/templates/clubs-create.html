@@ -13,18 +13,18 @@
         <div class="form-row ">
           <div class="form-group col-md-6">
             <label for="title">Title</label>
-            <input id="title" placeholder="title" th:field="*{title}" name="title">
+            <input type="text" class="form-control" id="title" placeholder="title" th:field="*{title}" name="title">
             <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></p>
           </div>
           <div class="form-group col-md-6">
             <label for="photoUrl">PhotoURL</label>
-            <input id="photoUrl" placeholder="Photo Url" th:field="*{photoUrl}" name="photoUrl">
+            <input type="text" class="form-control" id="photoUrl" placeholder="Photo Url" th:field="*{photoUrl}" name="photoUrl">
             <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger" th:errors="*{photoUrl}"></p>
           </div>
         </div>
         <div class="form-group mb-3">
           <label for="content">Content</label>
-          <input
+          <input type="text" class="form-control"
                   id="content" placeholder="Content" th:field="*{content}" name="content">
           <p th:if="${#fields.hasErrors('content')}" class="text-danger" th:errors="*{content}"></p>
         </div>
