@@ -43,4 +43,11 @@ public class EventServiceImpl implements EventService {
     }
 
 
+    @Override
+    public EventDto findByEventId(Long eventId) {
+        Event event =eventRepository.findById(eventId);
+        return mapToEventDto(event);
+    }
+
+
 }
